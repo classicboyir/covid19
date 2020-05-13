@@ -2,7 +2,7 @@
 
 currentDIR=`pwd`
    codeDIR=${currentDIR}/code
- outputDIR=${currentDIR}/output
+ outputDIR=${currentDIR}/outputs
 
 parentDIR=`dirname ${currentDIR}`
   dataDIR=${parentDIR}/000-data
@@ -18,7 +18,9 @@ cp    $0         ${outputDIR}/code
 myRscript=${codeDIR}/main.R
 stdoutFile=${outputDIR}/stdout.R.`basename ${myRscript} .R`
 stderrFile=${outputDIR}/stderr.R.`basename ${myRscript} .R`
-R --no-save --args ${dataDIR} ${codeDIR} ${outputDIR} < ${myRscript} > ${stdoutFile} 2> ${stderrFile}
+# R --no-save --args ${dataDIR} ${codeDIR} ${outputDIR} < ${myRscript} > ${stdoutFile} 2> ${stderrFile}
+
+R --no-save --args ${dataDIR} ${codeDIR} ${outputDIR} < ${myRscript} 
 
 ##################################################
 exit

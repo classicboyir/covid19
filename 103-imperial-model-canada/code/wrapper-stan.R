@@ -110,6 +110,8 @@ wrapper.stan_visualize.results <- function(
         height   = 6
         );
 
+    log_image_to_run(paste0("output-",StanModel,"-covars-alpha"), paste0("output-",StanModel,"-covars-alpha.png"))
+
     mu <- as.matrix(list.input[["out"]][["mu"]]);
     colnames(mu) = jurisdictions;
 
@@ -120,6 +122,8 @@ wrapper.stan_visualize.results <- function(
         width    = 4,
         height   = 6
         );
+
+    log_image_to_run(paste0("output-",StanModel,"-covars-mu"), paste0("output-",StanModel,"-covars-mu.png"))
 
     dimensions   <- dim(list.input[["out"]][["Rt"]]);
     Rt           <- as.matrix(list.input[["out"]][["Rt"]][,dimensions[2],]);
@@ -132,6 +136,8 @@ wrapper.stan_visualize.results <- function(
         width    = 4,
         height   = 6
         );
+
+    log_image_to_run(paste0("output-",StanModel,"-covars-final-rt"), paste0("output-",StanModel,"-covars-final-rt.png"))
 
     return( NULL );
 

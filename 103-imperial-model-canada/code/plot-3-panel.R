@@ -233,5 +233,7 @@ plot.three.panel_make.plots <- function(
       p,
       base_width = 14
       )
+
+  log_image_to_run(paste0("output-",StanModel,"-3-panel-",jurisdiction), paste0("output-",StanModel,"-3-panel-",jurisdiction,".png"))
 }
 

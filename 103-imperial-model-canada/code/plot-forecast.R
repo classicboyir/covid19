@@ -163,6 +163,7 @@ plot.forecast_single.plot <- function(
       width = 10
       );
 
+  log_image_to_run(paste0("output-",StanModel,"-forecast-",jurisdiction), paste0("output-",StanModel,"-forecast-",jurisdiction,".png"))
 }
 #-----------------------------------------------------------------------------------------------
 # make_forecast_plot()

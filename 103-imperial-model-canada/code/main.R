@@ -1,14 +1,42 @@
 
-command.arguments <- commandArgs(trailingOnly = TRUE);
-data.directory    <- normalizePath(command.arguments[1]);
-code.directory    <- normalizePath(command.arguments[2]);
-output.directory  <- normalizePath(command.arguments[3]);
+library(optparse)
+library(azuremlsdk)
+
+options <- list(
+    make_option(c("-d", "--data")),
+    make_option(c("-c", "--code")),
+    make_option(c("-o", "--output")),
+    make_option(c("-P", "--parameter"))
+)
+
+opt_parser <- OptionParser(option_list = options)
+opt <- parse_args(opt_parser)
+
+print( opt$data );
+print( opt$code );
+print( opt$output );
+print( opt$parameter );
+
+dir.create(opt$output)
+
+# command.arguments <- commandArgs(trailingOnly = TRUE);
+data.directory    <- normalizePath(opt$data);
+code.directory    <- normalizePath(opt$code);
+output.directory  <- normalizePath(opt$output);
+
+parameter = opt$parameter;
+print(typeof(parameter))
+
+log_metric_to_run("parameter", parameter);
+log_metric_to_run("accuracy", 99.9);
+
+# dir.create(output.directory)
 
 # add custom library using .libPaths()
 print( data.directory   );
 print( code.directory   );
 print( output.directory );
-print( format(Sys.time(),"%Y-%m-%d %T %Z") );
+print( format(Sys.time(),"%Y-%m-%d %T %Z"));
 
 start.proc.time <- proc.time();
 
@@ -182,7 +210,7 @@ results.wrapper.stan <- wrapper.stan(
     DF.serial.interval          = DF.serial.interval,
     DF.covariates               = DF.covariates,
     forecast.window             = 14,
-    DEBUG                       = FALSE # TRUE
+    DEBUG                       = TRUE
     );
 
 ##################################################
