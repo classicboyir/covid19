@@ -12,7 +12,7 @@
 *.nav
 *.out
 *.pdf
-*.csv
+# *.csv
 *.snm
 *.toc
 *.png
