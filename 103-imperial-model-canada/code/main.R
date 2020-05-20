@@ -27,16 +27,17 @@ output.directory  <- normalizePath(opt$output);
 parameter = opt$parameter;
 print(typeof(parameter))
 
+print('Main 1')
 log_metric_to_run("parameter", parameter);
 log_metric_to_run("accuracy", 99.9);
-
+print('Main 2')
 # dir.create(output.directory)
 
 # add custom library using .libPaths()
 print( data.directory   );
 print( code.directory   );
 print( output.directory );
-print( format(Sys.time(),"%Y-%m-%d %T %Z"));
+print( format(Sys.time(),"%Y-%m-%d %T %Z") );
 
 start.proc.time <- proc.time();
 
